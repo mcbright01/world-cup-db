@@ -57,3 +57,16 @@ chmod +x queries.sh
 ./queries.sh
 ./insert_data.sh
 ./queries.sh
+pg_dump -cC --inserts -U freecodecamp worldcup > worldcup.sql
+git init
+git add insert_data.sh queries.sh worldcup.sql
+git commit -m "Completed World Cup project"
+git remote add origin https://github.com/mcbright01/world-cup-db.git
+git push -u origin main
+git branch -M main
+git push -u origin main
+ls --color=auto -ld
+ls --color=auto -l
+git status
+git add
+git add .
