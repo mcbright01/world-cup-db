@@ -1,0 +1,59 @@
+clear
+psql --username=freecodecamp --dbname=postgres
+clear
+__vsc_prompt_cmd_original
+__vsc_prompt_cmd_original
+PSQL="psql --username=freecodecamp --dbname=worldcup -t --no-align -c"
+__vsc_prompt_cmd_original
+__vsc_prompt_cmd_original
+echo $($PSQL "TRUNCATE TABLE games, teams RESTART IDENTITY;")
+__vsc_prompt_cmd_original
+__vsc_prompt_cmd_original
+cat games.csv
+chmod +x insert_data.sh
+./insert_data.sh
+__vsc_prompt_cmd_original
+__vsc_prompt_cmd_original
+PSQL="psql --username=freecodecamp --dbname=worldcup -t --no-align -c"
+__vsc_prompt_cmd_original
+__vsc_prompt_cmd_original
+echo $($PSQL "SELECT SUM(winner_goals) FROM games")
+__vsc_prompt_cmd_original
+__vsc_prompt_cmd_original
+echo $($PSQL "SELECT SUM(winner_goals + opponent_goals) FROM games")
+__vsc_prompt_cmd_original
+__vsc_prompt_cmd_original
+echo $($PSQL "SELECT AVG(winner_goals) FROM games")
+__vsc_prompt_cmd_original
+__vsc_prompt_cmd_original
+echo $($PSQL "SELECT ROUND(AVG(winner_goals), 2) FROM games")
+__vsc_prompt_cmd_original
+__vsc_prompt_cmd_original
+echo $($PSQL "SELECT AVG(winner_goals + opponent_goals) FROM games")
+__vsc_prompt_cmd_original
+__vsc_prompt_cmd_original
+echo $($PSQL "SELECT MAX(GREATEST(winner_goals, opponent_goals)) FROM games")
+__vsc_prompt_cmd_original
+__vsc_prompt_cmd_original
+echo $($PSQL "SELECT COUNT(*) FROM games WHERE winner_goals > 2")
+__vsc_prompt_cmd_original
+__vsc_prompt_cmd_original
+echo $($PSQL "SELECT name FROM games LEFT JOIN teams ON games.winner_id = teams.team_id WHERE round = 'Final' AND year = 2018")
+__vsc_prompt_cmd_original
+__vsc_prompt_cmd_original
+echo $($PSQL "SELECT DISTINCT name FROM teams INNER JOIN games ON (teams.team_id = games.winner_id OR teams.team_id = games.opponent_id) WHERE round='Eighth-Final' AND year=2014 ORDER BY name")
+__vsc_prompt_cmd_original
+__vsc_prompt_cmd_original
+echo $($PSQL "SELECT DISTINCT name FROM teams INNER JOIN games ON teams.team_id = games.winner_id ORDER BY name")
+__vsc_prompt_cmd_original
+__vsc_prompt_cmd_original
+echo $($PSQL "SELECT year, name FROM games INNER JOIN teams ON games.winner_id = teams.team_id WHERE round='Final' ORDER BY year")
+__vsc_prompt_cmd_original
+__vsc_prompt_cmd_original
+echo $($PSQL "SELECT name FROM teams WHERE name LIKE 'Co%' ORDER BY name")
+chmod +x queries.sh
+./queries.sh
+./test.sh
+./queries.sh
+./insert_data.sh
+./queries.sh
